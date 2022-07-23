@@ -9,3 +9,8 @@ class DataFetched extends ReminderState {
 
   DataFetched(this.message);
 }
+class ListFetched extends ReminderState {
+  final List<Datum> result;
+
+  ListFetched(this.result);
+}

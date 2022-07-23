@@ -16,9 +16,12 @@ class ReminderPage extends StatefulWidget {
 class _ReminderPageState extends State<ReminderPage> {
   @override
   void initState() {
-    context.read<ReminderBloc>().add(
-          ViewReminder(),
-        );
+    // context.read<ReminderBloc>().add(
+    //       ViewReminder(),
+    //     );
+    BlocProvider(
+      create: (_) => ReminderBloc()..add(ViewReminder()),
+    );
     super.initState();
   }
 
@@ -48,7 +51,7 @@ class _ReminderPageState extends State<ReminderPage> {
                     children: const [
                       Icon(
                         Icons.add_circle,
-                        color: Colors.red,
+                        color: Colors.orange,
                       ),
                       Text(
                         'New Alert',
@@ -65,8 +68,16 @@ class _ReminderPageState extends State<ReminderPage> {
           ),
           body: BlocBuilder<ReminderBloc, ReminderState>(
             builder: (context, event) {
-              return ListView(
-                  children: List.generate(5, (index) => const ReminderTile()));
+              if (event is ListFetched) {
+                return ListView(
+                    children: List.generate(
+                        event.result.length,
+                            (index) => ReminderTile(
+                          reminderData: event.result[index],
+                        )));
+              } else {
+                return const Center(child: CircularProgressIndicator());
+              }
             },
           )),
     );

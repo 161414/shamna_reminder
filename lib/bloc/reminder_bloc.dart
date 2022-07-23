@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:remind_me/model/reminder.dart';
-import '../controller/service.dart';
-import '../model/reminder_list_model.dart';
+import 'package:remind_me/controller/service.dart' ;
+import 'package:remind_me/model/reminder_list_model.dart';
 part 'reminder_event.dart';
 part 'reminder_state.dart';
 
@@ -21,6 +21,7 @@ class ReminderBloc extends Bloc<ReminderEvent, ReminderState> {
       final response = await ReminderService().fetchReminderList();
       final result = reminderListModelFromJson(response.body);
       print(result.message);
+      emit(ListFetched(result.data));
     });
   }
 }

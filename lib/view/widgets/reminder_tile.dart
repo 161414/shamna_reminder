@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:remind_me/model/reminder_list_model.dart';
 
 class ReminderTile extends StatelessWidget {
+  final Datum reminderData;
   const ReminderTile({
-    Key? key,
-  }) : super(key: key);
+    required this.reminderData,
+  }) ;
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        title: const Text('Remind me to call'),
-        subtitle: const Text('Feb 17, 12:30 PM'),
+        title:  Text(reminderData.alertText),
+        subtitle: Row(
+          children: [
+             Text(reminderData.reminderDate.toString()),
+            Text(reminderData.reminderTime.toString()),
+          ],
+        ),
         trailing:
             //list if widget in appbar actions
             PopupMenuButton(
