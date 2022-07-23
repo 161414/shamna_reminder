@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart';
@@ -16,12 +18,12 @@ class ReminderPage extends StatefulWidget {
 class _ReminderPageState extends State<ReminderPage> {
   @override
   void initState() {
-    // context.read<ReminderBloc>().add(
-    //       ViewReminder(),
-    //     );
-    BlocProvider(
-      create: (_) => ReminderBloc()..add(ViewReminder()),
+    context.read<ReminderBloc>().add(
+      ViewReminder(),
     );
+    // BlocProvider(
+    //   create: (_) => ReminderBloc()..add(ViewReminder()),
+    // );
     super.initState();
   }
 

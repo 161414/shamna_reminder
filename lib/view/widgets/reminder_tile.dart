@@ -5,22 +5,23 @@ class ReminderTile extends StatelessWidget {
   final Datum reminderData;
   const ReminderTile({
     required this.reminderData,
-  }) ;
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        title:  Text(reminderData.alertText),
+        title: Text(reminderData.alertText),
         subtitle: Row(
           children: [
-             Text(reminderData.reminderDate.toString()),
+            Text(reminderData.reminderDate.toString()),
             Text(reminderData.reminderTime.toString()),
           ],
         ),
         trailing:
-            //list if widget in appbar actions
-            PopupMenuButton(
+        //list if widget in appbar actions
+        PopupMenuButton(
           icon: const Icon(
               Icons.menu), //don't specify icon if you want 3 dot menu
           color: Colors.white,

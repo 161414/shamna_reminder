@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:remind_me/model/reminder.dart';
-import 'package:remind_me/controller/service.dart' ;
+import 'package:remind_me/repository/service.dart';
 import 'package:remind_me/model/reminder_list_model.dart';
 part 'reminder_event.dart';
 part 'reminder_state.dart';

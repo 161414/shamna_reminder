@@ -20,7 +20,7 @@ class _SetReminderState extends State<SetReminder> {
   TextEditingController timeinput = TextEditingController();
   @override
   void dispose() {
-    // Clean up the controller when the widget is removed
+    // Clean up the repository when the widget is removed
     dateController.dispose();
 
     super.dispose();
